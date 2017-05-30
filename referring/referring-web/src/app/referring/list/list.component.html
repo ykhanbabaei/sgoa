@@ -1,0 +1,22 @@
+<div dir="rtl">
+<md-input-container align="end" style="width: 100%;" dir="rtl">
+      <input mdInput style="width: 100%; direction: rtl;" #searchBox id="search-box" placeholder="جستجو" (keyup)="search(searchBox.value)" />
+      <md-icon class="clear-icn" mdSuffix class="md-24" *ngIf="searchBox.value" (click)="searchBox.value='';search(searchBox.value)">cancel</md-icon>
+</md-input-container>
+<div id="list-component" style="direction: rtl;">
+</div>
+<div class="demo">
+<md-list dense style="width: 100%;">
+  <h3 md-subheader ></h3>
+  <md-list-item *ngFor="let item of referrings | async">
+  	<div style="padding-bottom: 20px;">
+        <button md-icon-button (click)="itemSelected(item)">
+		    <h4 md-line style="margin: 0;"> {{item.subject}} </h4>
+        </button>
+	    <div md-line class="demo-secondary-text">{{item.sender}}</div>
+	    <div md-line class="demo-secondary-text">{{item.desc}} </div>
+    </div>
+  </md-list-item>
+</md-list>
+</div>
+</div>
