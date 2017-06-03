@@ -25,6 +25,7 @@ import {
 import { ReferringComponent } from './referring/referring.component';
 import { ReferringDetailComponent } from './referring/referring-detail/referring-detail.component';
 import { CartableComponent } from './cartable/cartable.component';
+import { ReferringDetailService } from './referring/referring-detail/referring-detail.service';
   
 @NgModule({
   declarations: [
@@ -44,11 +45,12 @@ import { CartableComponent } from './cartable/cartable.component';
     RouterModule.forRoot([
       {path: 'cartable', component: CartableComponent},
       {path: 'referring/:id', component: ReferringComponent},
+      {path: 'referring-detail/:ref-detail-id', component: ReferringDetailComponent},
       {path: '', component: CartableComponent},
       {path: '**', redirectTo: ''}
     ])
   ],
-  providers: [ListService],
+  providers: [ListService, ReferringDetailService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

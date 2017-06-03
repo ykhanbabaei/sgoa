@@ -1,15 +1,17 @@
-<span *ngIf="referring.receivers">گیرندگان: </span>
-<md-chip-list>
-  <md-chip *ngFor="let recv of referring.receivers"  [color]="primary">
-    {{recv.name}}
-  </md-chip>
-</md-chip-list>
-
-<h5 style="padding-top: 10px;" *ngIf="referring.sender">فرستنده:</h5>
-<span >{{referring.sender}}</span>
-
-<h5 style="padding-top: 10px;" *ngIf="referring.subject">موضوع: </h5>
-<h4> {{referring.subject}}</h4>
-
-<h5 style="padding-top: 10px;" *ngIf="referring.desc">خلاصه ارجاع </h5>
-<h4> {{referring.desc}}</h4>
+<div class="container " style="width: 100%; height:100%; direction: rtl;">
+	<span *ngIf="referring.receivers">گیرندگان: </span>
+	<md-chip-list>
+	  <md-chip *ngFor="let recv of referring.receivers"  [color]="primary">
+	    {{recv.name}}
+	  </md-chip>
+	</md-chip-list>
+	
+	<h5 style="padding-top: 10px;" *ngIf="referring.sender">فرستنده:</h5>
+	<span >{{referring.sender}}</span>
+	
+	<h5 style="padding-top: 10px;" *ngIf="referring.subject">موضوع: </h5>
+	<h4> {{referring.subject}}</h4>
+	
+	<h5 style="padding-top: 10px;" *ngIf="referring.desc">خلاصه ارجاع </h5>
+	<h4> {{referring.desc}}</h4>
+</div>

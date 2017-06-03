@@ -11,6 +11,7 @@ import 'rxjs/add/operator/switchMap';
 
 import { ListService } from './list.service';
 import { Referring } from '../referring.model';
+import { Router } from '@angular/router'
 
 @Component( {
     selector: 'app-list',
@@ -23,7 +24,7 @@ export class ListComponent implements OnInit {
     
     referrings: Observable<Referring[]>;
     private searchTerms = new Subject<string>();
-    constructor(private listService: ListService) { }
+    constructor(private listService: ListService, private router: Router) { }
 
     // Push a search term into the observable stream.
     search( term: string ): void {
@@ -31,7 +32,7 @@ export class ListComponent implements OnInit {
     }
     
     ngOnInit(): void {
-        this.referrings = this.searchTerms
+        this.referrings = this.searchTerms.startWith('')
             .debounceTime( 300 )        // wait 300ms after each keystroke before considering the term
             .distinctUntilChanged()   // ignore if next search term is same as previous
             .switchMap( term => term   // switch to new observable each time the term changes
@@ -51,7 +52,13 @@ export class ListComponent implements OnInit {
     }
     
     itemSelected(referring: Referring){
+        console.log('itemSelected '+referring.id);
         this.onReferringSelected.emit(referring);
+    }
+    
+    gotoItem(referring: Referring){
+        console.log('gotoItem '+referring.id);
+        this.router.navigate(["referring-detail", referring.id]);
     }
 
 }
